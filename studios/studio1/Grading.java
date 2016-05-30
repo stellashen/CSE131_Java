@@ -17,7 +17,7 @@ public class Grading {
 
 		double total = .05*quiz + .1*studio + .3*lab + .3*extension + .25*exam;
 		
-		if (total > 100 && total < 0){
+		if (total > 100 || total < 0){
 			System.out.println("Sorry, the grade should be within 0-100. Your result is not within this range. Please calculate again.");
 		}
 		
