@@ -1,10 +1,12 @@
 package book.ch1;
 
+import cse131.ArgsProcessor;
+
 public class Loops {
 
 	public static void main(String[] args) {
-
-        int N = Integer.parseInt(args[0]);
+		ArgsProcessor ap = new ArgsProcessor(args);
+        int N = ap.nextInt("N=?");
         
         // print powers of two
         int v = 1;

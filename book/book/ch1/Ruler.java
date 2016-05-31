@@ -16,6 +16,7 @@ public class Ruler {
 		System.out.println(ruler2);
 		System.out.println(ruler3);
 		System.out.println(ruler4);	
+
 	}
 
 }
