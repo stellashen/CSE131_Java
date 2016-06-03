@@ -30,11 +30,12 @@ public class Grading {
 		
 		boolean plus = false;
 		boolean minus = false;
-		if ((total>=90&&total<93)||(total>=80&&total<83)||(total>=70&&total<73)) {
-            minus = true;
+		int remainder = totalint % 10;
+		if (remainder>=7 && totalint>=77) {
+            plus = true;
         }
-		if ((total >= 87 && total < 90)||(total>=77&&total<80)) {
-			plus = true;
+		if (remainder<3 && totalint>=70) {
+			minus = true;
 		}
 		
 		System.out.println(name + ":");
