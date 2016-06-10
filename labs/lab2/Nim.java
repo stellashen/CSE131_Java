@@ -21,7 +21,7 @@ public class Nim {
 
 		//scenario1: human first
 		if (order == 1){
-			for (int i = 0; removedSticks < 7; i++){
+			while (removedSticks < 7){
 				//human move
 				humanChoice = ap.nextInt("Please enter 1 or 2 to remove 1 or 2 sticks.");
 
@@ -77,7 +77,7 @@ public class Nim {
 		//scenario2: computer first
 		if (order == 2) {
 			removedSticks = 0;
-			for (int j = 0; removedSticks < 7; j++){
+			while (removedSticks < 7){
 				//computer move
 				if (removedSticks == 6){
 					computerChoice = 1;
