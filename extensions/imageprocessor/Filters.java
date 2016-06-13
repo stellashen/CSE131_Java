@@ -138,7 +138,7 @@ public class Filters {
 	//second image if the color from the first image is blue; otherwise returns
 	//the color from the first image.
 	public static Color bgReplace(Color s1Color, Color s2Color) {
-		if (s1Color == Color.BLUE){
+		if (s1Color.getRed() == 0 && s1Color.getBlue() == 255 && s1Color.getGreen()== 0){
 			return s2Color;
 		}
 		else {
