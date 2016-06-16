@@ -1,0 +1,13 @@
+6/8/2016 22:40:24		Yangchen Shen	sheny		36  integer	56.0  double	"abc45"  string	"9abc"  string	true  boolean	"int x = 7;
+int y = 2;
+x = 10;
+boolean z = true;
+
+if (x < y){
+	z = true;
+}
+else {
+	z = false;
+}"	int	double	string	boolean	string	
+
+100 / 100 Great job!									
