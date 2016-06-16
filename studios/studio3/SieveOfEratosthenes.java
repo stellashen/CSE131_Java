@@ -6,7 +6,7 @@ public class SieveOfEratosthenes {
 
 	public static void main(String[] args) {
 		ArgsProcessor ap = new ArgsProcessor(args);
-		int n = ap.nextInt("What's the length of the array? (Length is greater than 2.)");
+		int n = ap.nextInt("What's the length of the array? (Length >= 3)");
 
 		int[] prime = new int[n];// there are n numbers in the array, starting from 0...n-1
 
