@@ -12,11 +12,20 @@ public class OneRepMax {
 		
 		int max = (int)(w * (1+1.0*r/30));
 		int weight = (int)(1.0*max/(1+1.0*rep/30));
+		if (max%5 != 0){
+			max = (max/5)*5;
+		}
+		if (weight%5 != 0){
+			weight = (weight/5)*5;
+		}
 		System.out.println("One-rep max: " + max);
 		System.out.println("Weight for "+rep+" reps: "+weight);
 		
 		for (int i = 95; i>= 50; i = i - 5){
 			int n = (int)(1.0*max*i/100);
+			if (n%5 != 0){
+				n = (n/5)*5;
+			}
 			System.out.println(i+"% 1 RM: " + n);
 		}
 
