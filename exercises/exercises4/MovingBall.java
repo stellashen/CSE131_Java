@@ -1,5 +1,9 @@
 package exercises4;
 
+import java.awt.Color;
+
+import sedgewick.StdDraw;
+
 public class MovingBall {
 
 	public static void main(String[] args) {
@@ -10,11 +14,20 @@ public class MovingBall {
 		// need to represent the current x location of the ball
 		double ballX = 0.0;
 		
+		StdDraw.setPenColor(Color.MAGENTA);
+		StdDraw.setPenRadius(.05);
 		while (true) {
-			ballX = ballX + .05;
+			// clear the canvas
+			StdDraw.clear();
+			ballX = ballX + .005;
 			if (ballX > 1.0) { // moved too far right
 				ballX = 0; 	   // start again at left
 			}
+			StdDraw.point(ballX, 0.5);
+			// wait 10 ms, but also put the graphics 
+			//   output into "double buffered" mode:
+			//   it doesn't show until we say show
+			StdDraw.pause(10);
 		}
 
 	}
