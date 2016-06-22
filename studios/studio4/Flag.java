@@ -96,7 +96,7 @@ public class Flag {
 		while (!StdDraw.mousePressed()){
 			// wait, do nothing
 			// but don't spin tightly, pause
-			StdDraw.pause(100);
+			StdDraw.pause(50);
 		}
 		// Print country name repeatedly after typing a key
 		double riseY = .229/5;
@@ -112,36 +112,31 @@ public class Flag {
 		// End of printing country names.
 
 		// play music
-		ArgsProcessor.useStdInput("music");
+    	ArgsProcessor.useStdInput("music");
+    	
+    	
 
-		int number = 0; // number of pitches
+        // repeat as long as there are more integers to read in
+        while (!StdIn.isEmpty()) {
 
-		// repeat as long as there are more integers to read in
-		while (!StdIn.isEmpty()) {
+            // read in the pitch, where 0 = Concert A (A4)
+            int pitch = StdIn.readInt();
 
-			// read in the pitch, where 0 = Concert A (A4)
-			int pitch = StdIn.readInt();
+            // read in duration in seconds
+            double duration = StdIn.readDouble();
 
-			// read in duration in seconds
-			double duration = StdIn.readDouble();
+            // build sine wave with desired frequency
+            double hz = 440 * Math.pow(2, pitch / 12.0);
+            int N = (int) (StdAudio.SAMPLE_RATE * duration);
+            double[] a = new double[N+1];
+            
+            for (int i = 0; i <= N; i++) {
+                a[i] = Math.sin(2 * Math.PI * i * hz / StdAudio.SAMPLE_RATE);
+            }
 
-			// build sine wave with desired frequency
-			double hz = 440 * Math.pow(2, pitch / 12.0);
-			int N = (int) (StdAudio.SAMPLE_RATE * duration);
-			double[] a = new double[N+1];
-
-			for (int i = 0; i <= N; i++) {
-				a[i] = Math.sin(2 * Math.PI * i * hz / StdAudio.SAMPLE_RATE);
-			}
-
-			// play it using standard audio
-			StdAudio.play(a);
-			number = number + 1;
-		}
-		
-		//repeat?
-
-		System.out.println("total number of pitches to read in:" + number); // get 25
-
+            // play it using standard audio
+            StdAudio.play(a);
+            
+        }
 	}
 }
