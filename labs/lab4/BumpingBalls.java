@@ -12,14 +12,14 @@ public class BumpingBalls {
 		StdDraw.setXscale(-1.0, 1.0);
 		StdDraw.setYscale(-1.0, 1.0);
 		// ball(filled circle) radius
-		double radius = 0.1;
+		double radius = 0.15;
 		// ask for user input
 		ArgsProcessor ap = new ArgsProcessor(args);
 		int b = ap.nextInt("How many balls? "
-				+ "(Please enter a number between 2 and 20 for the best effect.)");
+				+ "(Please enter a number between 2 and 10 for the best effect.)");
 
-		while (b > 20 || b < 2){
-			b = ap.nextInt("Sorry, please enter a number between 2 and 20 for the best effect.");
+		while (b > 10 || b < 2){
+			b = ap.nextInt("Sorry, please enter a number between 2 and 10 for the best effect.");
 		}
 
 		int N = ap.nextInt("How many iterations? Please enter a number between 200 and 12000 for the best effect.");
@@ -43,8 +43,8 @@ public class BumpingBalls {
 		// assign a random velocity to each ball
 		for (int i = 0; i < b; ++i){
 			// velocity
-			vx[i] = Math.random()*0.015+0.01;
-			vy[i] = Math.random()*0.015+0.01;
+			vx[i] = Math.random()*0.005+0.015;
+			vy[i] = Math.random()*0.005+0.015;
 			// 50% chance to be negative
 			if (Math.random() < 0.5){
 				vx[i]=-vx[i];
@@ -87,6 +87,7 @@ public class BumpingBalls {
 
 		for (int t=0; t < N; ++t)  {
 			// clear the background
+			StdDraw.clear();
 			StdDraw.setPenColor(StdDraw.GRAY);
 			StdDraw.filledSquare(0, 0, 1.0);
 
@@ -101,20 +102,33 @@ public class BumpingBalls {
 					// update position for this ball
 					rx[j][i] = rx[j][i] + vx[i]; 
 					ry[j][i] = ry[j][i] + vy[i]; 
-
-					// check collision between pairs of balls
-//					if (i > 0){
-//						for (int k=0; k < i; ++k){
-//							double distance = Math.sqrt(Math.pow(rx[j][i]-rx[j][k], 2)+Math.pow(ry[j][i]-ry[j][k], 2));
-//							if (distance<2*radius){
-//								//change velocity for those who collide
-//							}
-//						}
-//					}
-//					// end of "if (i>0)" 
-				}
+				}					 
 			}
 			// end of 2D array loop
+
+			// check collision for each pair of balls
+			for (int i = 0;i<b; ++i){
+				for (int k=i+1; k < b; ++k){
+					double dx = rx[t][i]-rx[t][k];
+					double dy = ry[t][i]-ry[t][k];
+					double distance = Math.sqrt(dx*dx+dy*dy);
+					double dxn = dx + vx[i]-vx[k];
+					double dyn = dy + vy[i]-vy[k];
+					double nextDistance = Math.sqrt(dxn*dxn+dyn*dyn);
+					if (distance<=2*radius && nextDistance < distance){
+						//change velocity
+						vx[i] = -vx[i];
+						vy[i] = -vy[i];
+						vx[k] = -vx[k];
+						vy[k] = -vy[k];
+						//update position
+						rx[t][i] = rx[t][i] + vx[i]; 
+						ry[t][i] = ry[t][i] + vy[i]; 
+						rx[t][k] = rx[t][k] + vx[k]; 
+						ry[t][k] = ry[t][k] + vy[k];
+					}
+				}
+			}
 
 			// animation
 			for (int i=0; i<b; ++i){
@@ -130,7 +144,6 @@ public class BumpingBalls {
 			// Notice that each time, you want to display all the balls
 			// display and pause for 20 ms
 			StdDraw.show(20);
-
 		}
 	}
 }
