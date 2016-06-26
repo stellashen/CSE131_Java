@@ -6,6 +6,7 @@ public class Shuffle {
 		String[] original = { "A", "B", "C", "D",
 				"E", "F", "G", "H"
 		};
+		System.out.println(original[original.length - 1]);
 
 		// print out original array
 		for (int i=0; i < original.length; ++i) {

@@ -115,7 +115,6 @@ public class Flag {
     	ArgsProcessor.useStdInput("music");
     	
     	
-
         // repeat as long as there are more integers to read in
         while (!StdIn.isEmpty()) {
 
