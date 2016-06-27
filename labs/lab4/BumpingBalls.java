@@ -2,6 +2,7 @@ package lab4;
 
 import java.awt.Color;
 import cse131.ArgsProcessor;
+import sedgewick.StdAudio;
 import sedgewick.StdDraw;
 
 public class BumpingBalls {
@@ -106,6 +107,7 @@ public class BumpingBalls {
 			// end of 2D array loop
 
 			// check collision for each pair of balls
+			boolean collision = false;
 			for (int i = 0;i<b; ++i){
 				for (int k=i+1; k < b; ++k){
 					double dx = rx[t][i]-rx[t][k];
@@ -125,6 +127,8 @@ public class BumpingBalls {
 						ry[t][i] = ry[t][i] + vy[i]; 
 						rx[t][k] = rx[t][k] + vx[k]; 
 						ry[t][k] = ry[t][k] + vy[k];
+
+						collision = true;
 					}
 				}
 			}
@@ -143,6 +147,11 @@ public class BumpingBalls {
 				StdDraw.picture(rx[t][i], ry[t][i], "images/smileyface.gif");
 			}
 
+			// add sound effect
+			if (collision == true){
+				StdAudio.play("music/boing2.au");
+			}
+			
 			// Notice that each time, you want to display all the balls
 			// display and pause for 20 ms
 			StdDraw.show(20);
