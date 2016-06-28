@@ -1,0 +1,16 @@
+6/18/2016 21:32:45		Yangchen Shen			
+"		for (int i=1; i <= 8; i++){
+			System.out.println(4*i);
+		}"	
+        
+        "		if (x == y && y == z){
+			System.out.println(""No match"");
+		}
+		else if (x == y || y == z || x == z){
+			System.out.println(""Two Match"");
+		}
+		else {
+			System.out.println(""No match"");
+		}"
+        
+100 / 100
