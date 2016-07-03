@@ -93,7 +93,4 @@ public class Lab5Methods {
 		}
 		return result;
 	}
-
-
-
 }
