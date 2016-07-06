@@ -57,7 +57,7 @@ public class Birthday {
 		
 		System.out.println();
 		
-		double percent = Math.round(100.0*same / N)/100.0;
+		double percent = Math.round(100.0*same / N);
 		System.out.println("The percentage of people born on exactly the same day is " + percent + "%.");
 		
 	}
