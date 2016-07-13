@@ -1,0 +1,12 @@
+7/1/2016 15:06:36		Yangchen Shen	sheny		"		System.out.println(""Enter your name:"");
+		String name = StdIn.readString();
+		System.out.println(""Enter your age:"");
+		int age = StdIn.readInt();
+		while (age < 0){
+			System.out.println(""Age cannot be negative. Please enter your age. "");
+			age = StdIn.readInt();
+		}
+		System.out.println(""Hi, your name is "" + name + "". Your age is "" + age + ""."");
+"																				
+
+100 / 100
