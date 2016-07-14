@@ -7,8 +7,16 @@ public class Add {
 	//   add(x,y) =           x , if y == 0
 	//   add(x,y) = add(x+1,y-1), otherwise
 	//
+	
+	// require: y>=0
 	public static int add(int x, int y) {
-		return 0;  // FIXME
+		if (y==0){
+			//base case
+			return x;
+		}
+		else{
+			return add(x+1,y-1);
+		}
 	}
 	
 	//
@@ -24,10 +32,18 @@ public class Add {
 	//  As a hint, consider that  (x+y) = -(-x + -y)
 	//
 	public static int addAny(int x, int y) {
-		if (y >= 0)
+		if (y < 0){
+			if (x<0){
+				return -add(-x,-y);
+			}
+			else {
+				return add(y,x);
+			}
+		}
+			
+		else{
 			return add(x,y);
-		else
-			return 0; // FIXME
+		}
 	}
 
 }
