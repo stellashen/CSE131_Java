@@ -1,0 +1,12 @@
+6/23/2016 11:17:41	Yangchen Shen	sheny	
+a[3] = 14;	
+System.out.println(y[y.length - 1]);	
+boolean[] a = new boolean[10];	"		
+int numBig = 0;
+		for (int i=0; i < values.length; ++i){
+			if (values[i] > 0.7){
+				numBig = numBig + 1;
+			}
+		}"					
+        
+100 / 100
