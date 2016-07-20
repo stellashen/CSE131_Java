@@ -36,7 +36,7 @@ public class Methods {
 			return y+1;
 		}
 		else {
-			if (y==0){
+			if (y<=0){
 				return g(x-1,1);
 			}
 			else{
@@ -53,6 +53,7 @@ public class Methods {
 		//
 		System.out.println("f(99) = "+f(99)+" ; f(87) = " + f(87));
 		System.out.println("g(1,0) = "+g(1,0)+" ; g(1,2) = "+g(1,2)+" ; g(2,2) = "+g(2,2));
+		System.out.println(g(3,11));
 		System.out.println(g(4,0));
 		System.out.println(g(4,1));
 //		System.out.println(g(4,2));
