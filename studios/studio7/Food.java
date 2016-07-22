@@ -21,7 +21,7 @@ public class Food {
 	
 	/**
 	 * 
-	 * @return the number of Kcalories computed from the carbs, fat, and protein
+	 * @return the number of calories computed from the carbs, fat, and protein
 	 */
 	public double getCals() {
 		return 4*(carbs+protein) + 9*fat;
