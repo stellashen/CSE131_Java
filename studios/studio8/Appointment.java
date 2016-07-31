@@ -1,6 +1,6 @@
 package studio8;
 
-public class Appointment {
+public class Appointment implements Working{
 
 	private final Date d;
 	private final Time t;
@@ -16,6 +16,14 @@ public class Appointment {
 
 	public Time getT() {
 		return t;
+	}
+	
+	@Override
+	public boolean amWorking() {
+		if (d.amWorking()==true && t.amWorking()==true ){
+			return true;
+		}
+		else return false;
 	}
 	
 
@@ -52,12 +60,12 @@ public class Appointment {
 
 	@Override
 	public String toString() {
-		return "Appointment [d=" + d + ", t=" + t + "]";
+		return "Appointment date: " + d + " time: " + t;
 	}
 
 	public static void main(String[] args) {
 		Date d1 = new Date(1,1,2010,true);
-		Time t1 = new Time(1,2,true);
+		Time t1 = new Time(10,20,true);
 		Appointment a1 = new Appointment(d1,t1);
 		System.out.println(a1);
 	}

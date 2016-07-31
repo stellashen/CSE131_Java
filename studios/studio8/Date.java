@@ -3,11 +3,8 @@ package studio8;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
-import exercises8.Point;
-
-public class Date {
+public class Date implements Working {
 
 	private final int month, day, year;
 	private final boolean holiday;
@@ -18,10 +15,18 @@ public class Date {
 		this.year = year;
 		this.holiday = holiday;
 	}
+	
+	@Override
+	public boolean amWorking() {
+		if (this.day%2==0) return true;
+		else return false;
+	}
 
 	@Override
 	public String toString() {
-		return "Date [month=" + month + ", day=" + day + ", year=" + year + ", holiday=" + holiday + "]";
+		//return "Date [month=" + month + ", day=" + day + ", year=" + year + ", holiday=" + holiday + "]";
+	if (holiday == true) return month+"/"+day+"/"+year+"(holiday)";
+	else return month+"/"+day+"/"+year+"(not holiday)";
 	}
 
 	@Override
@@ -54,15 +59,26 @@ public class Date {
 			return false;
 		return true;
 	}
+	
+	public boolean isEarlierThan(Date other){
+		if (this.month < other.month){
+			return true;
+		}
+		else if (this.month == other.month){
+			if (this.day < other.day){
+				return true;
+			}
+			else return false;
+		}
+		else return false;
+
+	}
 
 	public static void main(String[] args) {
 		System.out.println(new Date(6,1,2011,true));
 		Date d1 = new Date(1,1,2010,true);
 		Date d2 = new Date(1,1,2010,true);
-		Date d3 = new Date(1,5,2010,false);
-		Date d4 = new Date(1,4,2010,false);
-		Date d5 = new Date(1,2,2010,false);
-		System.out.println(d1.equals(d2));
+		System.out.println("Are " + d1 + " and " + d2 + " the same date? " + d1.equals(d2));
 
 		List<Date> list = new LinkedList<Date>();
 		list.add(d1);
@@ -79,12 +95,8 @@ public class Date {
 		//the same date appear only once
 		// difference: list allows duplicates while set doesn't 
 		
-		
-		
+		System.out.println("Is " + d1 + " an ealier date than " + d2 + "? " +d1.isEarlierThan(d2));
+		System.out.println("Is " + d1 + " working day? " + d1.amWorking());	
 	}
-	
-
-
-
 
 }

@@ -4,13 +4,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class StockHolding implements Valuable {
-	
+
 	private final String code;
 	private final String owner;
 	private int numShares;
 	private double pricePerShare;
-	
-	
+
+
 
 	public StockHolding(String code, String owner, double pricePerShare) {
 		this.code = code;
@@ -18,11 +18,17 @@ public class StockHolding implements Valuable {
 		this.pricePerShare = pricePerShare;
 		this.numShares = 0; // initially
 	}
-	
+
 	@Override
 	public int getLiquidValue() {
-		return this.getLiquidValue();
+		return this.getCurrentValue();
 	}
+
+	public int getCurrentValue(){
+		return (int)(this.getNumShares()*this.getPricePerShare());
+	}
+
+
 
 	public String getCode() {
 		return code;
@@ -39,7 +45,7 @@ public class StockHolding implements Valuable {
 	public double getPricePerShare() {
 		return pricePerShare;
 	}
-	
+
 	public void setNumShares(int numShares) {
 		this.numShares = numShares;
 	}
@@ -53,7 +59,7 @@ public class StockHolding implements Valuable {
 		return "StockHolding [code=" + code + ", owner=" + owner + ", numShares=" + numShares + ", pricePerShare="
 				+ pricePerShare + "]";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -93,7 +99,7 @@ public class StockHolding implements Valuable {
 		s1.setNumShares(200);
 		set.add(s1);
 		System.out.println(set);
-		
+
 		StockHolding s2 = new StockHolding("IBM","Jane",3);
 		set.add(s2);
 		System.out.println(set);
