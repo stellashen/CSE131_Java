@@ -12,7 +12,6 @@ public class Vector {
 	 * @param deltaY
 	 */
 	public Vector(double deltaX, double deltaY) {
-		super();
 		this.deltaX = deltaX;
 		this.deltaY = deltaY;
 	}
