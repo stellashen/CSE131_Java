@@ -22,10 +22,19 @@ public class Polynomial {
 	}
 
 	public String toString() {
-		String s = Double.toString(list.getFirst());
+		String s = "";
+		if (list.size()==1){
+			s = Double.toString(list.getFirst());
+		}
 		String newTerm = "";
 		if (list.size()>1){
-			for (int i=1; i<list.size(); ++i){
+			s = Double.toString(list.getFirst());
+			newTerm = Double.toString(list.get(1))+"x";
+			if (list.get(1)!=0){
+				if (list.get(0)>0) newTerm = newTerm +"+";
+				s = newTerm + s;
+			}
+			for (int i=2; i<list.size(); ++i){
 				newTerm = Double.toString(list.get(i))+"x^"+Integer.toString(i);
 				if (list.get(i)!=0){
 					if (list.get(i-1)>0) newTerm = newTerm +"+";
@@ -76,7 +85,35 @@ public class Polynomial {
 	}
 
 	public Polynomial sum(Polynomial another) {
-		return null;   // FIXME
+		Polynomial newP = new Polynomial();
+		double newCoeff = 0;
+		LinkedList<Double> listOther = another.getList();
+		int n = list.size();
+		int m = listOther.size();
+		int smallerSize = 0;
+		int biggerSize = 0;
+		LinkedList<Double> bigList = this.list;
+		if (n<m){
+			smallerSize=n;
+			biggerSize=m;
+			bigList = another.getList();
+		}
+		else 
+			{
+			smallerSize=m;
+			biggerSize=n;
+			}
+		for (int i = 0; i < smallerSize;++i){
+		newCoeff = list.get(i)+listOther.get(i);
+		newP.addTerm(newCoeff);
+		}
+		if (n!=m){
+			for (int i = smallerSize; i < biggerSize; ++i){
+				newP.addTerm(bigList.get(i));
+			}
+		}
+		
+		return newP;
 	}
 
 	/**
