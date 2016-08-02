@@ -1,0 +1,9 @@
+7/11/2016 21:53:42	Yangchen Shen	shen.yangchen@wustl.edu	"	
+public static double circleArea(double r){
+		return Math.PI*r*r;
+	}"	
+    double area = circleArea(5.2);	TRUE	TRUE	TRUE	TRUE		
+    
+4, 5, and 6 are all false (-30)
+
+70 / 100
