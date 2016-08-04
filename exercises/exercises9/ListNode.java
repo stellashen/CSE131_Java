@@ -13,10 +13,37 @@ public class ListNode<T> {
 
 	//
 	// static and iterative
-	//
-	public static<T> int size(ListNode<T> start) {
+	public static<T> int sizeA(ListNode<T> start){
 		// NB  start could be null!
-		return 0; // FIXME
+		int ans = 0;
+		for (ListNode<T> p = start; p!=null; p=p.next){
+			ans = ans+1;
+		}
+		return ans;
+	}
+	
+	
+	
+	// static and recursive
+	public static<T> int size(ListNode<T> start) {
+		// T: parameter type for static
+		// return type: int
+		if(start == null){
+			return 0;
+		}
+		else{
+			return 1 + size(start.next);
+		}
+	}
+	
+	// static and recursive
+	public static int sum(ListNode<Integer> start){
+		if (start==null){
+			return 0;
+		}
+		else {
+			return start.value+sum(start.next); 
+		}
 	}
 
 	
@@ -29,16 +56,16 @@ public class ListNode<T> {
 				+ " " + head.next.value
 				+ " " + head.next.next.value 
 				+ " " + head.next.next.next.value);
-//		System.out.println("From start " + size(head));
-//		System.out.println(" next " + size(head.next));
-//		System.out.println(" then " + size(head.next.next));
-//		System.out.println(" then " + size(head.next.next.next));
-//		System.out.println(" end " + size(head.next.next.next.next));
-//		System.out.println("From start " + sum(head));
-//		System.out.println(" next " + sum(head.next));
-//		System.out.println(" then " + sum(head.next.next));
-//		System.out.println(" then " + sum(head.next.next.next));
-//		System.out.println(" end " + sum(head.next.next.next.next));
+		System.out.println("From start " + size(head));
+		System.out.println(" next " + size(head.next));
+		System.out.println(" then " + size(head.next.next));
+		System.out.println(" then " + size(head.next.next.next));
+		System.out.println(" end " + size(head.next.next.next.next));
+		System.out.println("From start " + sum(head));
+		System.out.println(" next " + sum(head.next));
+		System.out.println(" then " + sum(head.next.next));
+		System.out.println(" then " + sum(head.next.next.next));
+		System.out.println(" end " + sum(head.next.next.next.next));
 	}
 
 }
