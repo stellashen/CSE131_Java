@@ -83,8 +83,17 @@ public class DoublyLinkedListOfInts implements IntList {
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.size() == 0;
+	}
+	
+	public DoublyLinkedListOfInts reverse(){
+		DoublyLinkedListOfInts reverseList = new DoublyLinkedListOfInts();
+		
+		for (ListItem p = this.head.next; p != this.tail; p=p.next){
+			reverseList.addFirst(p.getValue());
+		}
+		
+		return reverseList;
 	}
 
 	public static void main(String[] args) {
@@ -99,6 +108,8 @@ public class DoublyLinkedListOfInts implements IntList {
 		System.out.println("Index of 130: " + list.indexOf(130));
 		System.out.println("Can we remove 132 from the list? " + list.remove(132));
 		System.out.println("After removing 132, list is: "+list);
+		System.out.println("Is this list empty? " + list.isEmpty());
+		System.out.println("List in reverse order: " + list.reverse());
 
 	}
 
