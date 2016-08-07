@@ -9,7 +9,7 @@ public class TestLinkedListOfInts {
 	
 	private IntList genNewList() {
 		// If you wish, uncomment the line below to test the code I developed in class
-		// return new SinglyLinkedListWithSentinel();
+//		 return new SinglyLinkedListWithSentinel();
 		//
 		//  but be sure to test with the line below, so it runs your code, not mine!
 		//
