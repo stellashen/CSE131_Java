@@ -27,7 +27,12 @@ public class ListItem {
 	 * @return
 	 */
 	public ListItem duplicate() {
-		return null; // FIXME
+		if (this.next == null){
+			return new ListItem(this.number,null);
+		}
+		else{
+			return new ListItem(this.number,this.next.duplicate()); // FIXED
+		}
 	}
 
 	/**

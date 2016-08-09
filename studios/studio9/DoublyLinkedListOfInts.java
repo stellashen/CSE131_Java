@@ -11,7 +11,7 @@ public class DoublyLinkedListOfInts implements IntList {
 		this.head = new ListItem(000,null,null);
 		this.tail = new ListItem(999,null,this.head);
 		this.head.next = this.tail;
-		this.setSize(0);
+		this.size = 0;
 	}
 
 	public int getSize() {
@@ -49,11 +49,14 @@ public class DoublyLinkedListOfInts implements IntList {
 
 	@Override
 	public int size() {
-		ListItem p = this.head.next;
 		int count = 0;
-		while (p != this.tail) {
-			p = p.next;
-			count = count + 1;
+		if (this.head.next == this.tail){
+			count = 0;
+		}
+		else{
+			for (ListItem p = this.head.next;p!=this.tail;p=p.next){
+				count = count + 1;
+			}
 		}
 		this.setSize(count);
 		return count;
@@ -91,14 +94,14 @@ public class DoublyLinkedListOfInts implements IntList {
 				p = p.next;
 			}
 		}
-			if (p==this.tail){
-				return false;
-			}
-			else {
-				p.setNext(p.next.next);
-				return true;
-			}
+		if (p==this.tail){
+			return false;
 		}
+		else {
+			p.setNext(p.next.next);
+			return true;
+		}
+	}
 
 	@Override
 	public boolean isEmpty() {
