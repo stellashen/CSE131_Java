@@ -1,6 +1,5 @@
 package lab9;
 
-
 public class ListItem {
 	//
 	// Important:  Do NOT make these instance variables private
@@ -42,7 +41,12 @@ public class ListItem {
 	 * @return
 	 */
 	public int length() {
-		return 0; // FIXME
+		if (this.next == null){
+			return 1;
+		}
+		else {
+			return 1+this.next.length();
+		}
 	}
 
 	/**
@@ -55,7 +59,26 @@ public class ListItem {
 	 */
 
 	public ListItem stretch(int n) {
-		return null;  // FIXME
+		ListItem ans = null;
+		// create an array storing the numbers of the original list in order
+		int length = this.length();
+		int[] numberArray = new int[length];
+		int k = 0;		
+		for (ListItem p = new ListItem(this.number,this.next); p != null; p=p.next){
+			numberArray[k]= p.number;
+			k=k+1;
+		}
+		// start from the last ListItem		
+		ans = new ListItem(numberArray[length-1],null);
+		for (int i=0;i<n-1;i++){
+			ans = new ListItem(numberArray[length-1],ans);
+		}
+		for (int i = length-2;i>=0;i=i-1){
+			for (int j = 0; j < n; j++){
+				ans = new ListItem(numberArray[i],ans);
+			}
+		}
+		return ans;
 	}
 
 	/**
@@ -67,8 +90,13 @@ public class ListItem {
 	 * @return
 	 */
 
-	public ListItem find(int n) {
-		return null;  // FIXME
+	public ListItem find(int target) {
+		for (ListItem p = new ListItem(this.number,this.next);p!=null;p=p.next){
+			if (p.number == target){
+				return p;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -80,7 +108,13 @@ public class ListItem {
 	 */
 
 	public int max() {
-		return 0; // FIXME
+		int max = this.number;
+		for (ListItem p = new ListItem(this.number,this.next);p!=null;p=p.next){
+			if (p.number > max){
+				max = p.number;
+			}
+		}
+		return max;
 	}
 
 	/**
@@ -90,9 +124,16 @@ public class ListItem {
 	 * @return
 	 */
 	public static ListItem evenElements(ListItem ls) {
-		return null;  // FIXME
+		if (ls==null){
+			return null;
+		}
+		else if (ls.number%2 == 0){
+			return new ListItem(ls.number,evenElements(ls.next));
+		}
+		else {
+			return evenElements(ls.next);
+		}
 	}	
-
 
 	/**
 	 * Returns a string representation of the values reachable from
@@ -106,5 +147,20 @@ public class ListItem {
 		else
 			return (number + " " + next); // calls next.toString() implicitly
 	}
+
+	//	used the following code to print out results while writing the program
+	//
+	//	public String toString() {
+	//		return "ListItem [number=" + number + ", next=" + next + "]";
+	//	}
+	//
+	//	public static void main(String[] args) {
+	//		ListItem item = new ListItem(1,null);
+	//		System.out.println(item.duplicate());
+	//		System.out.println(item.stretch(2));
+	//		ListItem item2 = new ListItem(1,new ListItem(2,null));
+	//		System.out.println(item2.duplicate());
+	//		System.out.println(item2.stretch(3));
+	//	}
 
 }
