@@ -1,10 +1,10 @@
 package tictactoe;
 
 public class TicTacToe  {
-	
+
 	// avoids Javdoc entry: all methods for this work are static
 	private TicTacToe() {
-		
+
 	}
 
 	/**
@@ -12,7 +12,13 @@ public class TicTacToe  {
 	 * @return a 3x3 String[][] array with each element set to a single blank string (" ").
 	 */
 	public static String[][] genBoard() {
-		return null; // FIXME
+		String[][] ans = new String[3][3];
+		for (int i = 0; i < 3; i++){
+			for (int j = 0; j < 3; j++){
+				ans[i][j] = " ";
+			}
+		}
+		return ans;
 	}
 
 	/**
@@ -34,7 +40,12 @@ public class TicTacToe  {
 	 * @param row should be between 0 and 2, inclusively
 	 */
 	public static void verifyValidRow(int row) {
-		throw new UnsupportedOperationException("You must implement this method");
+		if (row>=0 && row<=2){
+			return;
+		}
+		else{
+			throw new IllegalArgumentException("The row must be between 0 and 2 inclusively, but was instead " + row);
+		}
 	}
 
 	/**
@@ -42,7 +53,12 @@ public class TicTacToe  {
 	 * @param col should be between 0 and 2, inclusively
 	 */
 	public static void verifyValidCol(int col) {
-		throw new UnsupportedOperationException("You must implement this method");
+		if (col>=0 && col<=2){
+			return;
+		}
+		else{
+			throw new IllegalArgumentException("The column must be between 0 and 2 inclusively, but was instead " + col);
+		}
 	}
 
 
@@ -84,9 +100,11 @@ public class TicTacToe  {
 		verifyValidPlayer(player);
 		verifyValidRow(row);
 		verifyValidCol(col);
-		
-		
-		return false; // FIXME
+		if (board[row][col]==" "){
+			board[row][col] = player;
+			return true;
+		}
+		return false; 
 	}
 
 	/**
@@ -95,7 +113,15 @@ public class TicTacToe  {
 	 * @return true iff the board is full
 	 */
 	public static boolean boardFull(String[][] board) {
-		return true; // FIXME
+		boolean b = true;
+		for (int i = 0; i < 3; i++){
+			for (int j = 0; j < 3; j++){
+				if(board[i][j]!="x" && board[i][j]!="o"){
+					b = false;
+				}
+			}
+		}
+		return b;
 	}
 
 	/**
@@ -107,8 +133,32 @@ public class TicTacToe  {
 	 */
 	public static boolean winFor(String player, String[][] board) {
 		verifyValidPlayer(player);
-		
-		return true; // FIXME
+		int num = 0;
+		boolean win = false;
+		for (int i = 0; i < 3; i++){
+			num=0;
+			for (int j = 0; j < 3; j++){
+				if (board[i][j]==player){
+					num = num + 1;
+				}
+				if (num==3){
+					win = true;
+				}
+			}
+		}
+		for (int i = 0; i < 3; i++){
+			num=0;
+			for (int j = 0; j < 3; j++){
+				if (board[j][i]==player){
+					num = num + 1;
+				}
+				if (num==3){
+					win = true;
+				}
+			}
+		}
+
+		return win; 
 	}
 
 }

@@ -3,7 +3,7 @@ package watermelons;
 import java.util.Arrays;
 
 public class Watermelons {
-	
+
 	/**
 	 * Computes the sum of each distinct pair of entries in the incoming array.
 	 * A given pair of entries has its sum computed only once.  So if you
@@ -15,10 +15,18 @@ public class Watermelons {
 	 * @return an array containing the sums of pairs as described above
 	 */
 	public static int[] allPairSums(int[] nums) {
-		int[] ans = new int[] { 0 };  // FIXME compute ans as the result you want
+		int n = nums.length;
+		int[] ans = new int[n*(n-1)/2];
+		int i = 0;
+		for (int k = 0; k < n-1; k++){
+			for (int m = k+1; m < n; m++){
+				ans[i] = nums[k]+nums[m];
+				i=i+1;
+			}
+		}
 		return ans;
 	}
-	
+
 	/**
 	 * The method below must COMPUTE and return a solution as described
 	 * on the web page for this extension.  
@@ -32,9 +40,41 @@ public class Watermelons {
 	 * @return
 	 */
 	public static int[] getSolution(int[] pairSums) {
-		return new int[] { 0 };
+		//find the largest number of the pair sums
+		int bigSum = pairSums[0];
+		for (int i = 1; i < pairSums.length; i++){
+			if (pairSums[i]>bigSum){
+				bigSum = pairSums[i];
+			}
+		}
+		// weight of watermelons > 0
+		// the biggest weight cannot be larger than bigSum
+		// there are five watermelons
+		int[] ans = new int[5];
+//		for (int a = 1; a < bigSum; a++){
+//			for (int b = 1; b < bigSum; b++){
+//				for (int c = 1; c < bigSum; c++){
+//					for (int d = 1; d < bigSum; d++){
+//						for (int e = 1; e < bigSum; e++){
+		for (int a = bigSum-1; a > 0; a--){
+			for (int b = bigSum-1; b > 0; b--){
+				for (int c = bigSum-1; c > 0; c--){
+					for (int d = bigSum-1; d > 0; d--){
+						for (int e = bigSum-1; e >0; e--){
+							int[] nums = {a,b,c,d,e};
+							int[] sums = allPairSums(nums);
+							if (sameIntArrays(sums, pairSums)==true){
+								ans = nums;
+							}
+						}
+					}
+						
+				}
+			}
+		}
+		return ans;
 	}
-	
+
 	/**
 	 * Compare two arrays for equality.  They must first be
 	 * sorted, so that Arrays.equals can do its thing element

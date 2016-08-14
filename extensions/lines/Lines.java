@@ -1,5 +1,7 @@
 package lines;
 
+import java.awt.Color;
+
 import sedgewick.StdDraw;
 
 public class Lines {
@@ -13,6 +15,17 @@ public class Lines {
 	 */
 	public static void drawLine(double x1, double y1, double x2, double y2) {
 		// FIXME -- fill in this method according to the instructions
+		double dx = x2-x1;
+		double dy = y2-y1;
+		StdDraw.setPenRadius(0.01);
+		StdDraw.setPenColor(Color.BLACK);
+		StdDraw.point(x1, y1);
+		if (Math.abs(dx)<0.01&&Math.abs(dy)<0.01){
+			return;
+		}
+		else{
+		drawLine(x1+dx/200,y1+dy/200,x2,y2);
+		}
 	}
 	
 	
