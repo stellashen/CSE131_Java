@@ -1,0 +1,19 @@
+8/1/2016 19:55:32		Yangchen Shen	sheny		"	private double fuel, odometer;
+
+	public Car(double fuel, double odometer) {
+		this.fuel = fuel;
+		this.odometer = odometer;
+	}
+
+	public void drive(double miles, double amountFuelUsed){
+		this.odometer = this.odometer + miles;
+		this.fuel = this.fuel - amountFuelUsed;
+	}
+	
+	public void fillUp(double fuelAdd){
+		this.fuel = this.fuel + fuelAdd;
+	}"	"Car car1 = new Car(0,0);
+car1.fillUp(10);
+car1.drive(45, 1.5);"		
+
+100 / 100
