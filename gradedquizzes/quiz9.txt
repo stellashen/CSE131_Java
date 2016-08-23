@@ -1,0 +1,26 @@
+8/12/2016 22:12:57		Yangchen Shen	sheny	"	public void dup(){
+		ListItem p = this.next;
+		this.next = new ListItem(this.number,p);
+		if (p != null){
+			p.dup();
+		}
+	}"	"	public int count(int n){
+		if (this.next == null){
+			if (this.number == n){
+				return 1;
+			}
+			else {
+				return 0;
+			}
+		}
+		else{
+			if (this.number == n){
+				return 1+this.next.count(n);
+			}
+			else {
+				return this.next.count(n);
+			}
+		}
+	}"								
+    
+    100 / 100
