@@ -1,0 +1,55 @@
+8/8/2016 22:31:26		Yangchen Shen	sheny		"public interface Measurable {
+	
+	public double area();
+	
+	public double perimeter();
+
+}"	"public class Rectangle implements Measurable {
+
+	private double centerX, centerY, length, width;
+
+	public Rectangle(double centerX, double centerY, double length, double width) {
+		this.centerX = centerX;
+		this.centerY = centerY;
+		this.length = length;
+		this.width = width;
+	}
+
+	@Override
+	public double area() {
+		return length*width;
+	}
+
+	@Override
+	public double perimeter() {
+		double p = 2.0*(length+width);
+		return p;
+	}
+	
+}"	"public class Circle implements Measurable {
+
+	private double centerX, centerY, radius;
+
+	public Circle(double centerX, double centerY, double radius) {
+		this.centerX = centerX;
+		this.centerY = centerY;
+		this.radius = radius;
+	}
+
+	public double area() {
+		double a = Math.PI*radius*radius;
+		return a;
+	}
+
+	public double perimeter() {
+		double p = 2*Math.PI*radius;
+		return p;
+	}
+
+}"	"		List<Measurable> list = new LinkedList<Measurable>();
+		Rectangle r1 = new Rectangle(0,0,10,10);
+		Circle c1 = new Circle(0,0,5);
+		list.add(r1);
+		list.add(c1);"	
+        
+        100 / 100
